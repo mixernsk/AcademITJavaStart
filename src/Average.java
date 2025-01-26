@@ -7,7 +7,7 @@ public class Average {
         int start = scanner.nextInt();
         System.out.println("Введите число конца диапазона:");
         int end = scanner.nextInt();
-        if (start > 1 && end > start){
+        if (start > 1 && end > start) {
             double average = getAverage(start, end);
             System.out.println("Среднее арифметическое заданного диапазона равно:" + average);
         } else {
@@ -19,7 +19,7 @@ public class Average {
         int sum = 0;
         int count = 0;
 
-        for (int i = start; i <= end; i++){
+        for (int i = start; i <= end; i++) {
             sum += i;
             count++;
         }
