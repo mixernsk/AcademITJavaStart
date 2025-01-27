@@ -8,7 +8,16 @@ public class Numbers {
         System.out.print("Введите целое число: ");
         int number = scanner.nextInt();
         number = Math.abs(number);
-        String numberAsString = String.valueOf(number);
+        int[] result = getMetricsByDivisionMethod(number);
+
+        System.out.println("Сумма всех цифр числа: " + result[0]);
+        System.out.println("Сумма нечетных цифр числа: " + result[1]);
+        System.out.println("Максимальная цифра числа: " + result[2]);
+
+    }
+
+    private static int[] getMetricsByStringMethod(int sourceNumber) {
+        String numberAsString = String.valueOf(sourceNumber);
 
         int sumOfDigits = 0;
         int sumOfOddDigits = 0;
@@ -27,10 +36,27 @@ public class Numbers {
                 maxDigit = digit;
             }
         }
+        return new int[] {sumOfDigits, sumOfOddDigits, maxDigit};
+    }
+    private static int[] getMetricsByDivisionMethod(int sourceNumber) {
+        int sumOfDigits = 0;
+        int sumOfOddDigits = 0;
+        int maxDigit = 0;
 
-        System.out.println("Сумма всех цифр числа: " + sumOfDigits);
-        System.out.println("Сумма нечетных цифр числа: " + sumOfOddDigits);
-        System.out.println("Максимальная цифра числа: " + maxDigit);
+        while (sourceNumber > 0) {
+            int digit = sourceNumber % 10;
+            sumOfDigits += digit;
 
+            if (digit % 2 != 0) {
+                sumOfOddDigits += digit;
+            }
+
+            if (digit > maxDigit) {
+                maxDigit = digit;
+            }
+            sourceNumber /= 10;
+        }
+
+        return new int[] {sumOfDigits, sumOfOddDigits, maxDigit};
     }
 }

@@ -10,6 +10,8 @@ public class Average {
         if (start > 1 && end > start) {
             double average = getAverage(start, end);
             System.out.println("Среднее арифметическое заданного диапазона равно:" + average);
+            double evenAverage = getEvenAverage(start, end);
+            System.out.println("Среднее арифметическое всех четных чисел диапазона равно:" + evenAverage);
         } else {
             System.out.println("Число начала диапазона должно быть больше 1, и меньше числа конца диапазона");
         }
@@ -22,6 +24,19 @@ public class Average {
         for (int i = start; i <= end; i++) {
             sum += i;
             count++;
+        }
+        return (double) sum / count;
+    }
+
+    private static double getEvenAverage(int start, int end) {
+        int sum = 0;
+        int count = 0;
+
+        for (int i = start; i <= end; i++) {
+            if (i % 2 == 0) {
+                sum += i;
+                count++;
+            }
         }
         return (double) sum / count;
     }
